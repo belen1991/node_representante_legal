@@ -27,6 +27,17 @@ function update_representante_legal( representante_legal ) {
     })
 }
 
+function add_empresa( id, empresaId ) {
+    return new Promise((resolve, reject) => {
+        let resultado = storage.addEmpresa( id, empresaId )
+        if (resultado) {
+            return resolve( resultado )
+        } else {
+            return reject('No existe el representante_legal.')
+        }
+    })
+}
+
 function delete_representante_legal( ruc ) {
     return new Promise((resolve, reject) => {
         storage.delete( ruc )
@@ -38,5 +49,6 @@ module.exports = {
     get_representante_legal,
     add_representante_legal,
     update_representante_legal,
+    add_empresa,
     delete_representante_legal
 }

@@ -17,10 +17,24 @@ route.post('/', function(req, res) {
         .catch( (error) => response.error(req, res, error, 500) )
 })
 
+// route.patch('/', function(req, res) {
+//     controller.update_representante_legal( req.body )
+//         .then( (data) => response.success(req, res, data, 200) )
+//         .catch( (error) => response.error(req, res, error, 500) )
+// })
+
 route.patch('/', function(req, res) {
-    controller.update_representante_legal( req.body )
-        .then( (data) => response.success(req, res, data, 200) )
-        .catch( (error) => response.error(req, res, error, 500) )
+    controller.add_empresa( req.body.id, req.body.empresaId )
+        .then( (data) => 
+            {
+                const io = require('../../server.js')
+                io.emit('empresaAdded', 'Una empresa ha sido añadida al representante_legal.')
+                response.success(req, res, data, 200)
+            })
+        .catch( (error) => {
+            console.log('ERROR:', error);
+            response.error(req, res, error, 500) 
+        })
 })
 
 route.delete('/', function(req, res) {
