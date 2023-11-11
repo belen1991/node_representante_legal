@@ -3,8 +3,11 @@
 ### Gestión de Representantes legales y empresas (FrontEnd, Backend, WebSocket)
 Ejercicio en Node Js para crear Representantes Legales y adicionar empresas
 
-ejecutar el proyecto con 
+Instalar todos los paquetes necesarios con
 npm install
+
+Ejecutar el proyecto con 
 npx nodemon server.js
 
-en el navegador colocar http://localhost:3000
+Para visualizar la aplicación en el navegador colocar 
+http://localhost:3000
