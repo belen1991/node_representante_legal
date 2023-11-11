@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Representantes Legales</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css" />
+    <script type="text/javascript" src="./script/list-representante-legal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script>        
+        const socket = io();
+        socket.on('empresaAdded', (data)=>{
+            alert(data);
+            window.location.reload();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Lista de Representantes Legales</h1>
+        <button class="signout-button" onclick="signout()">Sign Out</button>
+    </header>
+
+    <a href="add-representante-legal.html" class="button">Agregar Representante Legal</a>
+    <div id="representantes-list">
+    </div>
+
+    <!-- Popup dialog -->
+    <div id="empresa-popup" class="popup">
+        <div class="popup-content">
+            <h2>Elegir una Empresa para el representante </h2>
+            <h2 id="representante-nombre-input"></h2>
+            <input type="hidden" id="representante-id-input">
+            <form id="select-empresa-form" action="">
+                <label for="empresa-select">Elegir una Empresa:</label>
+                <select id="empresa-select" name="empresa">
+                </select>
+                <br>
+
+                <button class="button" type="submit">Añadir</button>
+            </form>
+            <a href="#" class="no-button" id="close-popup">Close</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,25 @@
 
-fetch('/representante_legal')
+getRepresentantes()
+
+function signout(){
+    sessionStorage.setItem('token', "");
+    window.location.href = 'index.html';
+}
+
+function getRepresentantes()
+{
+    const token = sessionStorage.getItem('token');
+    if (!token || token=="") {
+        alert('Debe estar logueado para revisar el listado de representantes legales');
+        window.location.href = 'index.html';
+      }
+    fetch(`/representante_legal`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': token
+        }
+    })
     .then(response => response.json())
     .then(data => {
         const representantesList = document.getElementById('representantes-list');
@@ -27,6 +47,7 @@ fetch('/representante_legal')
     .finally(() => {
         cargarPopup();
     });
+}
 
 function cargarPopup(){
     const addEmpresaLinks = document.querySelectorAll('.add-empresa-link');
@@ -90,6 +111,7 @@ function cargarPopup(){
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+ token
             },
             body: JSON.stringify(data),
         })

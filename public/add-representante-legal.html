@@ -3,11 +3,11 @@
 <head>
     <title>Agregar Representante Legal</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
-    <script type="text/javascript" src="script-add-representante-legal.js"></script>
+    <script type="text/javascript" src="./script/add-representante-legal.js"></script>
 </head>
 <body>
     <h1>Agregar Representante Legal</h1>
-    <a href="index.html" class="button">Regresar al listado</a>
+    <a href="list-representante-legal.html" class="button">Regresar al listado</a>
     <form>
         <label for="ruc">RUC:</label>
         <input type="text" id="ruc" required><br>
@@ -30,7 +30,7 @@
         <label for="telefono">Telefono:</label>
         <input type="text" id="telefono" required><br>
 
-        <button class="button" onclick="guardar_representante_legal()">Guardar</button>
+        <button class="button" onclick="guardar()">Guardar</button>
         <button class="no-button" onclick="cancelar()">Cancelar</button>
     </form>
 </body>
